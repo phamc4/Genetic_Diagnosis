@@ -1,10 +1,11 @@
-![Header](https://github.com/phamc4/Colorectal-Cancer-Classification/blob/master/images/CCC_Header.png)
+<p align="center">
+  <img src="https://github.com/phamc4/Colorectal-Cancer-Classification/blob/master/images/CCC_Header.png"></img>
 
 
 ## Table of Contents
 
 - [Basic Overview](#basic-overview)
--[Background](#background)
+- [Background](#background)
 - [Exploring Data](#exploring-data)
   - [Initial Intake](#initial-intake)
   - [Feature Engineering](#feature-engineering)
