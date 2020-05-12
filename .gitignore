@@ -1,0 +1,5 @@
+#Ignore Folder
+data/
+.ipnb_checkpoints/
+
+#Ignore Files
