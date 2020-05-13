@@ -1,5 +1,6 @@
 #Ignore Folder
 data/
-.ipnb_checkpoints/
+.ipynb_checkpoints/
 
 #Ignore Files
+__pycache__/
