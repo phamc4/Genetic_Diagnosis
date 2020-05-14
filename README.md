@@ -34,3 +34,12 @@ Many genes contributing to cancer development fall into broad categories:
 -<b>Proto-oncogenes</b> Under normal circumstances, these genes are involved in cell growth and proliferation or inhibition of apoptosis(cell death). If these genes are mutated the will up regulate the promotion of cellular growth, predisposing the cell to cancer.
 
 A microarray analysis is used to detect and measure the expression of thousands of genes at the same time. By applying machine learning I am looking to see if we can predict or classify new cases of colorectal cancer by gene expression monitoring.
+
+
+## Exploring Data
+
+The data was taken for CuMiDa that contains cancer microarray datasets that have been extensively curated from 30,000 studies from the Gene Expression Omnibus. The dataset didn't require much cleaning, mainly just encoding the target variable and dropping a column. 
+
+
+**Initial Data**
+<img src="https://github.com/phamc4/Colorectal_Cancer_Prediction/blob/master/images/original_data.png"></img>
