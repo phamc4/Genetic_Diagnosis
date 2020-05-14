@@ -8,8 +8,6 @@
 - [Background](#background)
 - [Exploring Data](#exploring-data)
   - [Initial Intake](#initial-intake)
-  - [Feature Engineering](#feature-engineering)
-  - [Visualizations](#visualizations)
 - [Predictive Modeling](#predictive-modeling)
   - [Baseline](#baseline)
   - [Evaluation](#evaluation)
@@ -38,8 +36,19 @@ A microarray analysis is used to detect and measure the expression of thousands 
 
 ## Exploring Data
 
-The data was taken for CuMiDa that contains cancer microarray datasets that have been extensively curated from 30,000 studies from the Gene Expression Omnibus. The dataset didn't require much cleaning, mainly just encoding the target variable and dropping a column. 
+The data was taken from CuMiDa which contains cancer microarray datasets that have been extensively curated from 30,000 studies from the Gene Expression Omnibus. The dataset didn't require much cleaning, mainly just encoding the target variable and dropping a column. However there are columns which only specify the Affymetrix probe Id and not the gene associated with it. This should be addressed when doing logistic regression to determine feature(gene) importance.
 
 
 **Initial Data**
 <img src="https://github.com/phamc4/Colorectal_Cancer_Prediction/blob/master/images/original_data.png"></img>
+
+
+## Predicitve Modeling
+
+### Baseline
+
+<p>
+  <img align="right" src="https://github.com/phamc4/Colorectal_Cancer_Prediction/blob/master/images/target_label_counts.png"></img>
+</p>
+By looking at the target column, the number of normal and cancer patients are equally distributed. We can establish a naive baseline that doesn't require a model. Simply predicting adenocarcinoma everytime will give us an accuracy of 50%. Let's see if any of the machine learning approaches can be better than the baseline. 
+
