@@ -4,3 +4,6 @@ data/
 
 #Ignore Files
 __pycache__/
+GSE44076_family.soft.gz
+GSE44376_family.soft.gz
+Probeset.ipynb
