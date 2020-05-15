@@ -200,6 +200,7 @@ IL6R  | [NM_000565](https://www.ncbi.nlm.nih.gov/nuccore/NM_000565)
   <p>
   <img src="https://github.com/phamc4/Genetic_Diagnosis/blob/master/images/genelist.png"></img>
 
+</details>
 ## Future Considerations
 
 All the models performed relatively the same. The logistic regression model provided the most insight and also had the best performance on this dataset. Something to consider is how small the dataset is compared to the many features/genes we were measuring. If we had a larger number of rows we could be more confident in our findings here. 
