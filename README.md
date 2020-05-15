@@ -11,7 +11,6 @@
 - [Predictive Modeling](#predictive-modeling)
   - [Baseline](#baseline)
   - [Evaluation](#evaluation)
-  - [Tuning](#tuning)
 - [Performance](#performance)
 - [Future Considerations](#future-considerations)
 
@@ -132,5 +131,72 @@ print('K Means Clustering Accuracy:\n', round(accuracy_score(y_test, km_pred), 3
   <p>
   <img src="https://github.com/phamc4/Genetic_Diagnosis/blob/master/images/KMeans_confusionmatrix.png"></img>
   
-  
+</details>
+
+
 ### Logistic Regression
+
+To interpret the data easier, I implemented a logistic regression with an L1 or Lasso penalty. Lasso is helpful in sending most of the coefficients here down to zero. Here, it gives us more to work with compared to PCA.
+
+```python
+logmodel = LogisticRegression(solver='liblinear', penalty='l1')
+logmodel.fit(X_train_scaled, y_train)
+
+log_pred = logmodel.predict(X_test_scaled)
+log_loss(y_test, log_pred)
+```
+
+Total features: 49,386 
+<br>
+Selected features: 143
+<br>
+
+The features in the original dataset contained the probeset ID. I had to go back where I got the original dataset and write a custom function to match the probeset IDs to geneID. If you are doing this in R, they have a simple package that will do this for you called BiomaRt.
+<br>
+
+```python
+import GEOparse
+
+def get_geneID(geo_id, gsms_id, gpls_id):
+    gse = GEOparse.get_GEO(geo=geo_id, destdir="./")
+    
+    #Get all GSMS(samples) info:
+    gse.phenotype_data
+    
+    #Use sample name to retrieve corresponding data:
+    gse.gsms[gsms_id].table
+    
+    #PLatform info
+    probeset = gse.gpls[gpls_id].table
+    columns = probeset.columns
+    
+    return probeset[['ID', 'GB_LIST', 'Gene Title', 'Gene Symbol']], columns
+```
+<p>
+  <img src="https://github.com/phamc4/Genetic_Diagnosis/blob/master/images/important_genes.png"></img>
+ </p>
+
+
+Gene ID            | GenBank ID| 
+:-------------------------:|:-------------------------:|
+FOXQ1 | [NM_033260](https://www.ncbi.nlm.nih.gov/nuccore/NM_033260)
+ETV4  | [NM_001079675](https://www.ncbi.nlm.nih.gov/nuccore/NM_001079675)
+GTF2IRD1 | [NM_005685](https://www.ncbi.nlm.nih.gov/nuccore/NM_005685)
+MMP11 | [NM_0059640](https://www.uniprot.org/uniprot/P24347)
+CLDN1 | [NM_021101](https://www.ncbi.nlm.nih.gov/nuccore/NM_021101)
+ENC1  | [NM_003633](https://www.ncbi.nlm.nih.gov/nuccore/NM_003633)
+LPAR1 | [NM_001401](https://www.uniprot.org/uniprot/Q92633)
+SLC25A34 | [NM_207348](https://www.ncbi.nlm.nih.gov/nuccore/NM_207348)
+SFRP1 | [NM_003012](https://www.ncbi.nlm.nih.gov/nuccore/NM_003012)
+BEST4 | [NM_153274](https://www.ncbi.nlm.nih.gov/nuccore/NM_153274)
+IL6R  | [NM_000565](https://www.ncbi.nlm.nih.gov/nuccore/NM_000565)
+
+<details>
+  <summary>
+    Top  40 Important Genes according to model
+  </summary>
+  
+  <p>
+  <img src="https://github.com/phamc4/Genetic_Diagnosis/blob/master/images/genelist.png"></img>
+
+## Performance 
