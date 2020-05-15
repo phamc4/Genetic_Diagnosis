@@ -52,7 +52,7 @@ The data was taken from CuMiDa which contains cancer microarray datasets that ha
 <p>
   <img align="right" src="https://github.com/phamc4/Colorectal_Cancer_Prediction/blob/master/images/target_label_counts.png"></img>
 </p>
-By looking at the target column, the number of normal and cancer patients are equally distributed. We can establish a naive baseline that doesn't require a model. Simply predicting adenocarcinoma everytime will give us an accuracy of 50%. Let's see if any of the machine learning approaches can be better than the baseline. 
+By looking at the target column, the number of normal and cancer patients are equally distributed. We can establish a naive baseline that doesn't require a model. Simply predicting adenocarcinoma everytime will give us an accuracy of 50%. Let's see if any of the machine learning approaches can be better than the baseline. You'll see that all the models performed well on this particular dataset
 
 ## Evaluation
 
@@ -65,8 +65,72 @@ I set a threshold to capture 80% of the explained variance to see how many featu
 
 <img src="https://github.com/phamc4/Genetic_Diagnosis/blob/master/images/explained_variance.png"></img>
 
+Let's see what the PCA looks like with three principal components and 2 principal components.
+
 <p>
   <img align="left" src="https://github.com/phamc4/Genetic_Diagnosis/blob/master/images/3d%20PCA.png"></img>
 <p>
   <img alight="right" src="https://github.com/phamc4/Genetic_Diagnosis/blob/master/images/2d%20PCA.png"></img>
 </p>
+
+
+<details>
+  <summary>
+    Random Forest
+  </summary>
+  
+<img src="https://github.com/phamc4/Genetic_Diagnosis/blob/master/images/rf_model.png"></img>
+
+Out of the box, random forest performed well! By using a grid search to tune the hyperparameters we can see if we can improve it even further. 
+
+<p>
+  <img align="left" src="https://github.com/phamc4/Genetic_Diagnosis/blob/master/images/grid_serch.png"></img>
+<p>
+  <img alight="right" src="https://github.com/phamc4/Genetic_Diagnosis/blob/master/images/RF_confusionmatrix.png"></img>
+</p>
+
+</details>
+<details>
+  <summary>
+    Naive Bayes 
+  </summary>  
+  
+  Here we apply a straighforward naive bayes approach. It only had one incorrect classification.
+  
+  ```python
+nb_model = GaussianNB()
+nb_model.fit(X_train, y_train)
+nb_pred = nb_model.predict(X_test)
+
+print('Naive Bayes Accuracy:', round(accuracy_score(y_test, nb_pred), 3))
+```
+
+Naive Bayes Accuracy: 0.985
+
+  <p>
+  <img src="https://github.com/phamc4/Genetic_Diagnosis/blob/master/images/NB_confusionmatrix.png"></img>
+  </p>
+  
+  </details>
+  
+  
+<details>
+  <summary>
+    K Means Clustering 
+  </summary>
+  
+  I also tried an unsupervised clustering approach with k-means. I scaled the data and used PCA to reduce the dimensions to try and diminish the effects of the curse of dimensionality. It's performs similarly to the supervised learning models.
+  
+```python
+kmeans = KMeans(n_clusters=2, init='k-means++')
+kmeans.fit(X_train_pca)
+km_pred = kmeans.predict(X_test_pca)
+
+print('K Means Clustering Accuracy:\n', round(accuracy_score(y_test, km_pred), 3))
+```
+
+  <p>
+  <img src="https://github.com/phamc4/Genetic_Diagnosis/blob/master/images/KMeans_confusionmatrix.png"></img>
+  
+  
+### Logistic Regression
