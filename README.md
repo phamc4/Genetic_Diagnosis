@@ -36,6 +36,8 @@ A microarray analysis is used to detect and measure the expression of thousands 
 
 ## Exploring Data
 
+<img src="https://github.com/phamc4/Genetic_Diagnosis/blob/master/images/ncbi_logo.png"></img>
+
 The data was taken from CuMiDa which contains cancer microarray datasets that have been extensively curated from 30,000 studies from the Gene Expression Omnibus. The dataset didn't require much cleaning, mainly just encoding the target variable and dropping a column. However there are columns which only specify the Affymetrix probe Id and not the gene associated with it. This should be addressed when doing logistic regression to determine feature(gene) importance.
 
 
@@ -52,3 +54,19 @@ The data was taken from CuMiDa which contains cancer microarray datasets that ha
 </p>
 By looking at the target column, the number of normal and cancer patients are equally distributed. We can establish a naive baseline that doesn't require a model. Simply predicting adenocarcinoma everytime will give us an accuracy of 50%. Let's see if any of the machine learning approaches can be better than the baseline. 
 
+## Evaluation
+
+### PCA
+
+With almost 50,000 features, it was worth considering reducing the dimensionality of the dataset. Let's, first approach this problem with principal component analysis (PCA).
+
+I set a threshold to capture 80% of the explained variance to see how many features were required to meet that threshold.
+32 features explained around 80% of the variance! From 50,000 to 32 features.
+
+<img src="https://github.com/phamc4/Genetic_Diagnosis/blob/master/images/explained_variance.png"></img>
+
+<p>
+  <img align="left" src="https://github.com/phamc4/Genetic_Diagnosis/blob/master/images/3d%20PCA.png"></img>
+<p>
+  <img alight="right" src="https://github.com/phamc4/Genetic_Diagnosis/blob/master/images/2d%20PCA.png"></img>
+</p>
