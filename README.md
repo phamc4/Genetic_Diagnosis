@@ -65,8 +65,23 @@ I set a threshold to capture 80% of the explained variance to see how many featu
 
 <img src="https://github.com/phamc4/Genetic_Diagnosis/blob/master/images/explained_variance.png"></img>
 
+Let's see what the PCA looks like with three principal components and 2 principal components.
+
 <p>
   <img align="left" src="https://github.com/phamc4/Genetic_Diagnosis/blob/master/images/3d%20PCA.png"></img>
 <p>
   <img alight="right" src="https://github.com/phamc4/Genetic_Diagnosis/blob/master/images/2d%20PCA.png"></img>
+</p>
+
+
+## Random Forest
+
+<img src="https://github.com/phamc4/Genetic_Diagnosis/blob/master/images/rf_model.png"></img>
+
+Out of the box, random forest performed well! By using a grid search to tune the hyperparameters we can see if we can improve it even further. 
+
+<p>
+  <img align="left" src="https://github.com/phamc4/Genetic_Diagnosis/blob/master/images/rf_model.png"></img>
+<p>
+  <img alight="right" src="https://github.com/phamc4/Genetic_Diagnosis/blob/master/images/RF_confusionmatrix.png"></img>
 </p>
