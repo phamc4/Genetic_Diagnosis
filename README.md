@@ -11,7 +11,6 @@
 - [Predictive Modeling](#predictive-modeling)
   - [Baseline](#baseline)
   - [Evaluation](#evaluation)
-- [Performance](#performance)
 - [Future Considerations](#future-considerations)
 
 ## Basic Overview
@@ -174,6 +173,8 @@ def get_geneID(geo_id, gsms_id, gpls_id):
 ```
 <p>
   <img src="https://github.com/phamc4/Genetic_Diagnosis/blob/master/images/important_genes.png"></img>
+  <p>
+  <img src="https://github.com/phamc4/Genetic_Diagnosis/blob/master/images/logisticregression.png"></img>
  </p>
 
 
@@ -199,4 +200,9 @@ IL6R  | [NM_000565](https://www.ncbi.nlm.nih.gov/nuccore/NM_000565)
   <p>
   <img src="https://github.com/phamc4/Genetic_Diagnosis/blob/master/images/genelist.png"></img>
 
-## Performance 
+</details>
+## Future Considerations
+
+All the models performed relatively the same. The logistic regression model provided the most insight and also had the best performance on this dataset. Something to consider is how small the dataset is compared to the many features/genes we were measuring. If we had a larger number of rows we could be more confident in our findings here. 
+<br>
+Outside of data science realm, diving deeper into the genes that the model proposed to be important could further validate the prediction model. There are endless amounts of studies that can be done to a single gene and they're effects on the body due to upregulation or downregulation of their genes. Having a predictive model to narrow down gene importance can get researchers in the right direction.
